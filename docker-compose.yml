@@ -12,8 +12,6 @@ services:
 
     ports:
       - "5441:5441"
-    networks:
-      - my_bridge_network
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
@@ -27,6 +25,8 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://0.0.0.0:5441/paymentsB?autoReconnect=true
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 1234
+    networks:
+      - my_bridge_network
 
 volumes:
   postgres-data:
