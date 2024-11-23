@@ -22,7 +22,7 @@ services:
     depends_on:
       - postgres
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://0.0.0.0:5441/paymentsB?autoReconnect=true
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5441/paymentsB?autoReconnect=true
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 1234
     networks:
