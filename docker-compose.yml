@@ -1,35 +1,15 @@
-version: '3.8'
+name: pagosB
 services:
-  postgres:
+
+  graphqludea1:
     build:
       context: .
       dockerfile: Dockerfile
-    image: postgres:13
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: paymentsB
-
-    ports:
-      - "5441:5441"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-  graphqludea1:
-    build: .
     ports:
       - "8009:8009"
-    depends_on:
-      - postgres
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/codefactory_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 1234
     networks:
       - my_bridge_network
 
-volumes:
-  postgres-data:
 
 networks:
   my_bridge_network:
