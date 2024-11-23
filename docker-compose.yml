@@ -1,13 +1,19 @@
 version: '3.8'
 services:
   postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: postgres:13
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: paymentsB
+
     ports:
       - "5441:5441"
+    networks:
+      - my_bridge_network
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
@@ -24,3 +30,7 @@ services:
 
 volumes:
   postgres-data:
+
+networks:
+  my_bridge_network:
+    external: true
